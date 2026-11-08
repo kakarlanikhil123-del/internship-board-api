@@ -1,0 +1,38 @@
+### Health check
+GET http://localhost:4000/api/health
+
+### List with pagination
+GET http://localhost:4000/api/internships?page=1&limit=3
+
+### Search and filter
+GET http://localhost:4000/api/internships?search=Python&mode=hybrid
+
+### Get one (replace ID with an actual ID from the list response)
+GET http://localhost:4000/api/internships/REPLACE_WITH_ID
+
+### Create
+POST http://localhost:4000/api/internships
+Content-Type: application/json
+
+{
+  "title": "React Developer Intern",
+  "company": "Example Tech",
+  "domain": "Frontend Development",
+  "mode": "remote",
+  "location": "India",
+  "description": "Build and test reusable React components for a web application.",
+  "skills": ["React", "JavaScript", "CSS"],
+  "openings": 2,
+  "applyUrl": "https://example.com/apply"
+}
+
+### Update (replace ID)
+PATCH http://localhost:4000/api/internships/REPLACE_WITH_ID
+Content-Type: application/json
+
+{
+  "openings": 4
+}
+
+### Delete (replace ID)
+DELETE http://localhost:4000/api/internships/REPLACE_WITH_ID

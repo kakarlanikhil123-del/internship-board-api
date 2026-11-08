@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum InternshipMode {
+  remote
+  onsite
+  hybrid
+}
+
+model Internship {
+  id          String         @id @default(cuid())
+  seedKey     String?        @unique
+  title       String
+  company     String
+  domain      String
+  mode        InternshipMode
+  location    String
+  description String
+  skills      String[]
+  openings    Int            @default(1)
+  applyUrl    String?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@index([domain])
+  @@index([mode])
+  @@index([createdAt])
+}
